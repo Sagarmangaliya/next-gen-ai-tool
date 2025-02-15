@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pillow
+speechrecognition
+opencv-python
+sympy
+z3-solver
