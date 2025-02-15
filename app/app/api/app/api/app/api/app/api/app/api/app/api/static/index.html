@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next-Gen AI Tool</title>
+</head>
+<body>
+    <h1>Next-Gen AI Tool</h1>
+    <form id="textForm">
+        <label for="text">Enter Text:</label>
+        <input type="text" id="text" name="text">
+        <button type="submit">Process Text</button>
+    </form>
+    <pre id="response"></pre>
+
+    <script>
+        document.getElementById("textForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const text = document.getElementById("text").value;
+            const response = await fetch("/api/text", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ text })
+            });
+            const data = await response.json();
+            document.getElementById("response").textContent = JSON.stringify(data, null, 2);
+        });
+    </script>
+</body>
+</html>
